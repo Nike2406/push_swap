@@ -1,37 +1,42 @@
 NAME 		= push_swap
 FLAGS		= -Wall -Wextra -Werror
-CFLAGS		= $(FLAGS) -I. -Iget_next_line
+CFLAGS		= $(FLAGS) -I.
 CC			= gcc
-OBJS	 	= $(SRCS:%.c=%.o)
-OBJS_BONUS 	= $(SRCS_BONUS:%.c=%.o)
+
+ifeq ($(MAKECMDGOALS),bonus)
+	OBJS = $(SRCS_BONUS:%.c=%.o)
+else
+	OBJS = $(SRCS:%.c=%.o)
+endif
+
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 SRCS 		= src/push_swap.c
-SRCS_BONUS 	= src/push_swap.c
+INCLUDE		= push_swap.h
+LIBFT_A		= libft/libft.a
 
 .PHONY: all clean fclean re bonus libft norm
 
-.o: .c
+.o: .c $(INCLUDE)
 	$(CC) $(CFLAGS) $< -o $@
 
 all: libft $(NAME)
 
-${NAME}: $(OBJS) push_swap.h
-	$(CC) $(OBJS) -Llibft -lft -o $(NAME)
+${NAME}: $(OBJS) $(INCLUDE)
+	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
 
-bonus: libft $(OBJS_BONUS) push_swap.h
-	$(CC) $(OBJS_BONUS) -Llibft -lft -o $(NAME)
+bonus: libft $(NAME)
 
 norm:
 	norminette $(SRCS)
-	norminette pipex.h
+	norminette $(SRCS_BONUS)
+	norminette $(INCLUDE)
 	make -C libft/ norm
 
 libft:
 	make lib -C libft
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(OBJS_BONUS)
+	rm -f src/*.o
 	make -C libft clean
 
 fclean: clean
