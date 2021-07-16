@@ -18,27 +18,23 @@ void	get_parse(t_ps_struct *s_psw)
 
 	i = 0;
 	j = 1;
-	int_arr = calloc(sizeof(int), (s_psw->argc - 1));
+	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
 	while (s_psw->argv[j])
 	{
-		int_arr[i] = ft_atoi(s_psw->argv[j]);
-		i++;
-		j++;
+		int_arr[i++] = ft_atoi(s_psw->argv[j++]);
 	}
+	s_psw->arr_len = j;
 	s_psw->int_arr = int_arr;
-	get_sort_pw(s_psw, 0, i);
+	get_sort_ps(s_psw, 0, i - 1);
 	i = 0;
-	while (i < s_psw->argc - 1)
+	while (i < s_psw->arr_len - 1)
 	{
-		// printf("Before - \t%d\n", i);
-		printf("Value - \t%d\n", s_psw->int_arr[i++]);
-		// printf("After - \t%d\n\n", i);
-		// ft_putchar('\n');
+		printf("Value after srt - \t%d\n", s_psw->int_arr[i++]);
 	}
 	free(int_arr);
 }
 
-void	get_sort_pw(t_ps_struct *s_psw, int i, int j)
+void	get_sort_ps(t_ps_struct *s_psw, int i, int j)
 {
 	int	mdl;
 	int	f;
@@ -57,9 +53,9 @@ void	get_sort_pw(t_ps_struct *s_psw, int i, int j)
 			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
 	}
 	if (i < l)
-		get_sort_pw(s_psw, i, l);
+		get_sort_ps(s_psw, i, l);
 	if (j > f)
-		get_sort_pw(s_psw, f, j);
+		get_sort_ps(s_psw, f, j);
 }
 
 int	main(int argc, char **argv)
@@ -70,6 +66,9 @@ int	main(int argc, char **argv)
 
 	(void)s_a;
 	(void)s_b;
+
+	check_args(argc, argv);
+
 	s_psw.argc = argc;
 	s_psw.argv = argv;
 
