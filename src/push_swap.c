@@ -28,7 +28,7 @@ void	get_parse(t_ps_struct *s_psw)
 	s_psw->int_arr = int_arr;
 	get_sort_pw(s_psw, 0, i);
 	i = 0;
-	while (i < s_psw->argc)
+	while (i < s_psw->argc - 1)
 	{
 		// printf("Before - \t%d\n", i);
 		printf("Value - \t%d\n", s_psw->int_arr[i++]);
@@ -47,24 +47,14 @@ void	get_sort_pw(t_ps_struct *s_psw, int i, int j)
 	f = i;
 	l = j;
 	mdl = s_psw->int_arr[(f + l) / 2];
-
 	while (f <= l)
 	{
 		while (s_psw->int_arr[f] < mdl)
-		{
 			f++;
-		}
-
 		while (s_psw->int_arr[l] > mdl)
-		{
 			l--;
-		}
 		if (f <= l)
-		{
-			ft_swap(&s_psw->int_arr[f], &s_psw->int_arr[l]);
-			f++;
-			l--;
-		}
+			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
 	}
 	if (i < l)
 		get_sort_pw(s_psw, i, l);
