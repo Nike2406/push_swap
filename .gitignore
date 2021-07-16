@@ -4,3 +4,4 @@ CMakeLists.txt
 *.o
 push_swap.exe
 push_swap
+*.a
