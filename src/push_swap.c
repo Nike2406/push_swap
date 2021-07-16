@@ -30,9 +30,9 @@ void	get_parse(t_ps_struct *s_psw)
 	i = 0;
 	while (i < s_psw->argc)
 	{
-		printf("Before - \t%d\n", i);
+		// printf("Before - \t%d\n", i);
 		printf("Value - \t%d\n", s_psw->int_arr[i++]);
-		printf("After - \t%d\n\n", i);
+		// printf("After - \t%d\n\n", i);
 		// ft_putchar('\n');
 	}
 	free(int_arr);
