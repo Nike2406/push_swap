@@ -4,10 +4,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_push_swap
 {
 	void			*content;
-	struct s_list	*next;
+	struct s_push_swap	*next;
 }					t_list;
 
 void		*ft_memset(void *b, int c, size_t len);

@@ -11,7 +11,8 @@ endif
 
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 SRCS 		= src/push_swap.c \
-			src/utils.c
+			src/utils.c \
+			src/movements.c
 INCLUDE		= push_swap.h
 LIBFT_A		= libft/libft.a
 

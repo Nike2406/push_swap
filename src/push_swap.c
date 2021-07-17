@@ -60,14 +60,14 @@ void	get_sort_ps(t_ps_struct *s_psw, int i, int j)
 
 int	main(int argc, char **argv)
 {
-	t_push_swap	s_a;
-	t_push_swap	s_b;
+	// t_push_swap	s_a;
+	// t_push_swap	s_b;
 	t_ps_struct	s_psw;
 
-	(void)s_a;
-	(void)s_b;
+	// (void)s_a;
+	// (void)s_b;
 
-	check_args(argc, argv);
+	check_isnum(argc, argv);
 
 	s_psw.argc = argc;
 	s_psw.argv = argv;

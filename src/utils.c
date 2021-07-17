@@ -11,7 +11,7 @@ void	ft_err(int	code)
 	exit(code);
 }
 
-void	check_args(int argc, char **argv)
+void	check_isnum(int argc, char **argv)
 {
 	int			i;
 	int			j;
@@ -30,4 +30,13 @@ void	check_args(int argc, char **argv)
 		}
 		i++;
 	}
+}
+
+void	check_repeat(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	char	**arr;
+
+	arr = ft_calloc(sizeof(char), (argc - 1));
 }
