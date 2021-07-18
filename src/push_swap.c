@@ -1,4 +1,5 @@
 #include "../push_swap.h"
+// Убрать!
 #include <stdio.h>
 
 void	ft_swap(int *a, int *b)
@@ -10,7 +11,7 @@ void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-void	get_parse(t_ps_struct *s_psw)
+void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 {
 	int	*int_arr;
 	int	i;
@@ -18,10 +19,21 @@ void	get_parse(t_ps_struct *s_psw)
 
 	i = 0;
 	j = 1;
+
+	(void)l_a;
+	(void)l_b;
+
 	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
+
 	while (s_psw->argv[j])
 	{
-		int_arr[i++] = ft_atoi(s_psw->argv[j++]);
+		int_arr[i] = ft_atoi(s_psw->argv[j]);
+		// ft_lstnew_ps(ft_atoi(s_psw->argv[j])); // ???
+
+		// whlie (la.next != NULL)
+		// 	la = la.next
+		i++;
+		j++;
 	}
 	s_psw->arr_len = j;
 	s_psw->int_arr = int_arr;
@@ -29,7 +41,9 @@ void	get_parse(t_ps_struct *s_psw)
 	i = 0;
 	while (i < s_psw->arr_len - 1)
 	{
-		printf("Value after srt - \t%d\n", s_psw->int_arr[i++]);
+		printf("Value after srt - \t%d\n", s_psw->int_arr[i]);
+		printf("Value l_a->value - \t%d\n", l_a->value);
+		i++;
 	}
 	free(int_arr);
 }
@@ -63,6 +77,8 @@ int	main(int argc, char **argv)
 	// t_push_swap	s_a;
 	// t_push_swap	s_b;
 	t_ps_struct	s_psw;
+	t_stack l_a;
+	t_stack l_b;
 
 	// (void)s_a;
 	// (void)s_b;
@@ -72,7 +88,8 @@ int	main(int argc, char **argv)
 	s_psw.argc = argc;
 	s_psw.argv = argv;
 
-	get_parse(&s_psw);
+	get_parse(&s_psw, &l_a, &l_b);
+	check_repeat(&s_psw);
 	// while (1);
 
 	return (0);

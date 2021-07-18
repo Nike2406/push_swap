@@ -5,7 +5,9 @@ void	ft_err(int	code)
 	if (code == 1)
 		ft_putstr("Please, add more data.\n");
 	else if (code == 2)
-		ft_putstr("Only digits are allow!\n");
+		ft_putstr("Only numbers are allow!\n");
+	else if (code == 3)
+		ft_putstr("Parametres must not be repeated!\n");
 	else
 		ft_putstr("Unexpected error.\n");
 	exit(code);
@@ -32,11 +34,27 @@ void	check_isnum(int argc, char **argv)
 	}
 }
 
-void	check_repeat(int argc, char **argv)
+void	check_repeat(t_ps_struct *s_psw)
 {
-	(void)argc;
-	(void)argv;
-	char	**arr;
+	int	i;
 
-	arr = ft_calloc(sizeof(char), (argc - 1));
+	i = 0;
+	while (s_psw->int_arr[i] < s_psw->arr_len - 1)
+	{
+		if (s_psw->int_arr[i] == s_psw->int_arr[i + 1])
+			ft_err(3);
+		i++;
+	}
+}
+
+t_stack	*ft_lstnew_ps(void *content)
+{
+	t_stack	*nel;
+
+	nel = (t_stack *)malloc(sizeof(t_stack));
+	if (!nel)
+		return (NULL);
+	nel->value = content;
+	nel->next = NULL;
+	return (nel);
 }
