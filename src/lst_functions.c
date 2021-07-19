@@ -54,7 +54,7 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 	return (tmp);
 }
 
-t_stack	*ft_lstnew_ps(void *content)
+t_stack	*ft_lstnew_ps(int content)
 {
 	t_stack	*nel;
 

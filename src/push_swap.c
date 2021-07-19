@@ -20,15 +20,13 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	i = 0;
 	j = 1;
 
-	(void)l_a;
-	(void)l_b;
 
 	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
 
 	while (s_psw->argv[j])
 	{
 		int_arr[i] = ft_atoi(s_psw->argv[j]);
-		// ft_lstnew_ps(ft_atoi(s_psw->argv[j])); // ???
+		ft_lstnew_ps(ft_atoi(s_psw->argv[j])); // ???
 
 		// whlie (la.next != NULL)
 		// 	la = la.next
@@ -78,7 +76,7 @@ int	main(int argc, char **argv)
 	// t_push_swap	s_b;
 	t_ps_struct	s_psw;
 	t_stack l_a;
-	t_stack l_b;
+	// t_stack l_b;
 
 	// (void)s_a;
 	// (void)s_b;
@@ -88,7 +86,7 @@ int	main(int argc, char **argv)
 	s_psw.argc = argc;
 	s_psw.argv = argv;
 
-	get_parse(&s_psw, &l_a, &l_b);
+	get_parse(&s_psw, &l_a);
 	check_repeat(&s_psw);
 	// while (1);
 

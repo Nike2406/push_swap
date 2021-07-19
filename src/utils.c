@@ -46,15 +46,3 @@ void	check_repeat(t_ps_struct *s_psw)
 		i++;
 	}
 }
-
-t_stack	*ft_lstnew_ps(void *content)
-{
-	t_stack	*nel;
-
-	nel = (t_stack *)malloc(sizeof(t_stack));
-	if (!nel)
-		return (NULL);
-	nel->value = content;
-	nel->next = NULL;
-	return (nel);
-}

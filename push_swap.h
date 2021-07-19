@@ -19,7 +19,7 @@ typedef struct s_ps_struct
 	int		arr_len;
 }	t_ps_struct;
 
-void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b);
+void	get_parse(t_ps_struct *s_psw, t_stack *l_a);
 void	get_sort_ps(t_ps_struct *s_psw, int i, int j);
 void	ft_swap(int *a, int *b);
 
@@ -31,6 +31,6 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void	ft_lstadd_front_ps(t_stack **lst, t_stack *new);
 void	ft_lstclear_ps(t_stack **lst, void (*del)(void *));
 t_stack	*ft_lstlast_ps(t_stack *lst);
-t_stack	*ft_lstnew_ps(void *content);
+t_stack	*ft_lstnew_ps(int content);
 
 #endif
