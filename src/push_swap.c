@@ -11,7 +11,7 @@ void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
+void	get_parse(t_ps_struct *s_psw, t_stack *l_a)
 {
 	int	*int_arr;
 	int	i;
@@ -19,15 +19,15 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 
 	i = 0;
 	j = 1;
-
+	// (void)l_a;
 
 	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
-
+	// ft_lstnew_ps(ft_atoi(s_psw->argv[j])); // ???
+	l_a = NULL;
 	while (s_psw->argv[j])
 	{
 		int_arr[i] = ft_atoi(s_psw->argv[j]);
-		ft_lstnew_ps(ft_atoi(s_psw->argv[j])); // ???
-
+		ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi(s_psw->argv[j])));
 		// whlie (la.next != NULL)
 		// 	la = la.next
 		i++;
@@ -40,7 +40,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	while (i < s_psw->arr_len - 1)
 	{
 		printf("Value after srt - \t%d\n", s_psw->int_arr[i]);
-		printf("Value l_a->value - \t%d\n", l_a->value);
+		// printf("Value l_a->value - \t%d\n", l_a->value);
 		i++;
 	}
 	free(int_arr);

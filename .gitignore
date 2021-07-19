@@ -4,3 +4,5 @@
 push_swap.exe
 push_swap
 *.a
+a.out.dSYM
+push_swap.dSYM

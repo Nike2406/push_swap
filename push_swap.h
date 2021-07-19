@@ -29,7 +29,7 @@ void	check_repeat(t_ps_struct *s_psw);
 
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void	ft_lstadd_front_ps(t_stack **lst, t_stack *new);
-void	ft_lstclear_ps(t_stack **lst, void (*del)(void *));
+void	ft_lstclear_ps(t_stack **lst, void (*del)(int));
 t_stack	*ft_lstlast_ps(t_stack *lst);
 t_stack	*ft_lstnew_ps(int content);
 

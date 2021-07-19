@@ -14,7 +14,7 @@ SRCS 		= src/push_swap.c \
 			src/utils.c \
 			src/movements.c \
 			src/lst_functions.c \
-INCLUDE		= push_swap.h
+#INCLUDE		= push_swap.h
 LIBFT_A		= libft/libft.a
 
 .PHONY: all clean fclean re bonus libft norm
@@ -25,7 +25,7 @@ LIBFT_A		= libft/libft.a
 all: libft $(NAME)
 
 ${NAME}: $(OBJS) $(INCLUDE)
-	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT_A) -I. -o $(NAME)
 
 bonus: libft $(NAME)
 
@@ -44,6 +44,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f ./a.out
 	rm -f libft/libft.a
 
 re: fclean all
