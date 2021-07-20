@@ -65,3 +65,16 @@ t_stack	*ft_lstnew_ps(int content)
 	nel->next = NULL;
 	return (nel);
 }
+
+int	ft_lstsize_ps(t_stack *lst)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
