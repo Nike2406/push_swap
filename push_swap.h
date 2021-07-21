@@ -39,5 +39,8 @@ void	sb(t_stack *l_b);
 void	ss(t_stack *l_a, t_stack *l_b);
 void	pa(t_stack **l_a, t_stack **l_b);
 void	pb(t_stack **l_a, t_stack **l_b);
+void	ra(t_stack **l_a);
+void	rb(t_stack **l_b);
+void	rr(t_stack **l_a, t_stack **l_b);
 
 #endif

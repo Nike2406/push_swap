@@ -46,6 +46,9 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	// Проверка стека а
 	t_stack *current;
 	pb(&l_a, &l_b);
+	pb(&l_a, &l_b);
+
+	rr(&l_a, &l_b);
 	current = l_a;
 	while (current != NULL)
 	{
