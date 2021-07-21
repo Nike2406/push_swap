@@ -6,3 +6,5 @@ push_swap
 *.a
 a.out.dSYM
 push_swap.dSYM
+*.gch
+*.out

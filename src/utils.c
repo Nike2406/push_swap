@@ -27,7 +27,9 @@ void	check_isnum(int argc, char **argv)
 		while (argv[i][j])
 		{
 			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				ft_err(2);
+				if (argv[i][j] == '-')
+					if (!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9'))
+						ft_err(2);
 			j++;
 		}
 		i++;
