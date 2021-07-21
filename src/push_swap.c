@@ -45,10 +45,11 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 
 	// Проверка стека а
 	t_stack *current;
-	pb(&l_a, &l_b);
-	pb(&l_a, &l_b);
+	// pb(&l_a, &l_b);
+	// pb(&l_a, &l_b);
+	rra(&l_a);
 
-	rr(&l_a, &l_b);
+	// rr(&l_a, &l_b);
 	current = l_a;
 	while (current != NULL)
 	{
@@ -56,13 +57,13 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 		current = current->next;
 	}
 	ft_putchar('\n');
-	current = l_b;
-	while (current != NULL)
-	{
-		printf("l_b - \t%d\n", current->value);
-		current = current->next;
-	}
-	ft_putchar('\n');
+	// current = l_b;
+	// while (current != NULL)
+	// {
+	// 	printf("l_b - \t%d\n", current->value);
+	// 	current = current->next;
+	// }
+	// ft_putchar('\n');
 	printf("List size a - \t%d\n", ft_lstsize_ps(l_a));
 	printf("List size b - \t%d\n", ft_lstsize_ps(l_b));
 	// printf("List - \t%p\n", &l_a);
