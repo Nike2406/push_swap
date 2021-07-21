@@ -26,7 +26,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	while (s_psw->argv[j])
 	{
 		int_arr[i] = ft_atoi(s_psw->argv[j]);
-		ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi(s_psw->argv[j])));
+		ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi_ps(s_psw->argv[j])));
 		i++;
 		j++;
 	}
