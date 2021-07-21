@@ -13,7 +13,8 @@
 				"100",
 				"542",
 				"3",
-				"-242"
+				"-242",
+				"3"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",

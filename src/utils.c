@@ -3,16 +3,13 @@
 void	ft_err(int	code)
 {
 	if (code == 1)
-		ft_putstr("Please, add more data.\n");
+		ft_putstr("Error\n");
 	else if (code == 2)
-		ft_putstr("Only numbers are allow!\n");
+		ft_putstr("Error\n");
 	else if (code == 3)
-		ft_putstr("Parametres must not be repeated!\n");
+		ft_putstr("Error\n");
 	else if (code == 4)
-	{
-		ft_putstr("The number must be in the range of int values:\n");
-		ft_putstr("\t(-2147483648 >= int <= 2147483647)!\n");
-	}
+	ft_putstr("Error\n");
 	else
 		ft_putstr("Unexpected error.\n");
 	exit(code);
@@ -24,9 +21,11 @@ void	check_isnum(int argc, char **argv)
 	int			j;
 
 	i = 1;
+	// Проверка на аргументы (?)
 	(void)argc;
 	// if (argc < 3)
 	// 	ft_err(1);
+
 	while (argv[i])
 	{
 		j = 0;

@@ -43,14 +43,15 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	s_psw->arr_len = j;
 	s_psw->int_arr = int_arr;
 	get_sort_ps(s_psw, 0, i - 1);
+	check_repeat(s_psw);
 	// // Проверка массива после сортировки
-	// i = 0;
-	// while (i < s_psw->arr_len - 1)
-	// {
-	// 	printf("Array srt - \t%d\n", s_psw->int_arr[i]);
-	// 	// printf("Value l_a->value - \t%d\n", l_a->value);
-	// 	i++;
-	// }
+	i = 0;
+	while (i < s_psw->arr_len - 1)
+	{
+		printf("Array srt - \t%d\n", s_psw->int_arr[i]);
+		// printf("Value l_a->value - \t%d\n", l_a->value);
+		i++;
+	}
 	free(int_arr);
 
 	// Проверка стека а
@@ -121,7 +122,6 @@ int	main(int argc, char **argv)
 	s_psw.argv = argv;
 
 	get_parse(&s_psw, &l_a, &l_b);
-	check_repeat(&s_psw);
 	// while (1);
 
 	return (0);
