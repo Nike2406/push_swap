@@ -24,8 +24,9 @@ void	check_isnum(int argc, char **argv)
 	int			j;
 
 	i = 1;
-	if (argc < 3)
-		ft_err(1);
+	(void)argc;
+	// if (argc < 3)
+	// 	ft_err(1);
 	while (argv[i])
 	{
 		j = 0;

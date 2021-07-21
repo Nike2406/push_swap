@@ -16,17 +16,27 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	int	*int_arr;
 	int	i;
 	int	j;
+	int	s;
+	char	**tmp_arr;
 
 	i = 0;
 	j = 1;
+	s = 0;
 
 	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
 	l_a = NULL;
 	l_b = NULL;
 	while (s_psw->argv[j])
 	{
-		int_arr[i] = ft_atoi(s_psw->argv[j]);
-		ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi_ps(s_psw->argv[j])));
+		tmp_arr = ft_split(s_psw->argv[j], ' ');
+		while (tmp_arr[s])
+		{
+			int_arr[i] = ft_atoi_ps(tmp_arr[s]);
+			ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi_ps(tmp_arr[s])));
+			s++;
+		}
+		s = 0;
+		free(tmp_arr);
 		i++;
 		j++;
 	}
