@@ -31,10 +31,11 @@ int			ft_limits_ps(long long total, char const s, int sign);
 
 void		ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void		ft_lstadd_front_ps(t_stack **lst, t_stack *new);
-void		ft_lstclear_ps(t_stack **lst, void (*del)(int));
+void		ft_lstclear_ps(t_stack *lst);
 t_stack		*ft_lstlast_ps(t_stack *lst);
 t_stack		*ft_lstnew_ps(int content);
 int			ft_lstsize_ps(t_stack *lst);
+void		clear_ps(t_stack **lst);
 
 void		sa(t_stack *l_a);
 void		sb(t_stack *l_b);

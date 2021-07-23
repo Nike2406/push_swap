@@ -46,7 +46,7 @@ void	check_repeat(t_ps_struct *s_psw)
 	int	i;
 
 	i = 0;
-	while (s_psw->int_arr[i] < s_psw->arr_len - 1)
+	while (i < s_psw->arr_len - 1)
 	{
 		if (s_psw->int_arr[i] == s_psw->int_arr[i + 1])
 			ft_err(3);
