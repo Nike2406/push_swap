@@ -26,22 +26,19 @@ void	ft_lstadd_front_ps(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-void	ft_lstclear_ps(t_stack *lst)
+void	ft_lstclear_ps(t_stack **lst)
 {
 	t_stack	*tmp;
 
-	tmp = lst;
-	if (!lst)
+	tmp = NULL;
+	if (!*lst)
 		return ;
-	while (lst)
+	while (*lst)
 	{
-		lst->value = 0;
-		tmp = lst;
-		lst = lst->next;
+		tmp = *lst;
+		*lst = (*lst)->next;
 		free(tmp);
 	}
-	lst = NULL;
-	free(lst);
 }
 
 t_stack	*ft_lstlast_ps(t_stack *lst)
@@ -49,6 +46,7 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 	t_stack	*tmp;
 
 	tmp = lst;
+	tmp->ind = 0;
 	if (!lst)
 		return (NULL);
 	while (tmp->next)
@@ -79,14 +77,4 @@ int	ft_lstsize_ps(t_stack *lst)
 		i++;
 	}
 	return (i);
-}
-
-void	clear_ps(t_stack **lst)
-{
-	t_stack	*tmp;
-
-	if (lst == NULL)
-		return ;
-	tmp = *lst;
-	*lst = (*lst)->next;
 }

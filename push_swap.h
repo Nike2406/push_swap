@@ -2,6 +2,9 @@
 # define PIPEX_H
 
 # include "./libft/libft.h"
+// Убрать!
+# include <stdio.h>
+
 
 typedef struct s_stack
 {
@@ -28,10 +31,11 @@ void		check_isnum(int argc, char **argv);
 void		check_repeat(t_ps_struct *s_psw);
 int			ft_atoi_ps(const char *str);
 int			ft_limits_ps(long long total, char const s, int sign);
+void		get_index(t_stack *lst, int *arr, t_ps_struct *s_spw);
 
 void		ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void		ft_lstadd_front_ps(t_stack **lst, t_stack *new);
-void		ft_lstclear_ps(t_stack *lst);
+void		ft_lstclear_ps(t_stack **lst);
 t_stack		*ft_lstlast_ps(t_stack *lst);
 t_stack		*ft_lstnew_ps(int content);
 int			ft_lstsize_ps(t_stack *lst);

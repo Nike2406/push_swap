@@ -1,6 +1,4 @@
 #include "../push_swap.h"
-// Убрать!
-#include <stdio.h>
 
 void	ft_swap(int *a, int *b)
 {
@@ -18,63 +16,63 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	int	j;
 	int	s;
 	char	**tmp_arr;
-	t_stack	*tmp;
 
 	i = 0;
 	j = 1;
-	s = 0;
 
 	int_arr = ft_calloc(sizeof(int), (s_psw->argc - 1));
-	l_a = NULL;
-	l_b = NULL;
 	while (s_psw->argv[j])
 	{
 		tmp_arr = ft_split(s_psw->argv[j], ' ');
+		s = 0;
 		while (tmp_arr[s])
 		{
 			int_arr[i] = ft_atoi_ps(tmp_arr[s]);
-			tmp = ft_lstnew_ps(ft_atoi_ps(tmp_arr[s]));
-			ft_lstadd_back_ps(&l_a, tmp);
-			free(tmp);
+			// tmp = ft_lstnew_ps(ft_atoi_ps(tmp_arr[s]));
+			ft_lstadd_back_ps(&l_a, ft_lstnew_ps(ft_atoi_ps(tmp_arr[s])));
 			free(tmp_arr[s]);
 			s++;
+			s_psw->arr_len++;
 		}
 		free(tmp_arr);
-		s = 0;
 		i++;
 		j++;
 	}
+
 	s_psw->arr_len = j;
 	s_psw->int_arr = int_arr;
 	get_sort_ps(s_psw, 0, i - 1);
 	check_repeat(s_psw);
-	// // Проверка массива после сортировки
-	// i = 0;
-	// while (i < s_psw->arr_len - 1)
-	// {
-	// 	printf("Array srt - \t%d\n", s_psw->int_arr[i]);
-	// 	// printf("Value l_a->value - \t%d\n", l_a->value);
-	// 	i++;
-	// }
+	get_index(l_a, int_arr, s_psw);
+	// Проверка массива после сортировки
+	i = 0;
+	while (i < s_psw->arr_len - 1)
+	{
+		printf("Array srt - \t%d\n", s_psw->int_arr[i]);
+		// printf("Value l_a->value - \t%d\n", l_a->value);
+		i++;
+	}
+	write(1, "\n", 1);
 	i = 0;
 	while (int_arr[i])
 		int_arr[i++] = 0;
 	free(int_arr);
 
 	// Проверка стека а
-	// t_stack *current;
+	t_stack *current;
 	// pb(&l_a, &l_b);
 	// pb(&l_a, &l_b);
 	// rra(&l_a);
-
 	// rr(&l_a, &l_b);
-	// current = l_a;
-	// while (current != NULL)
-	// {
-	// 	printf("l_a - \t%d\n", current->value);
-	// 	current = current->next;
-	// }
-	// ft_putchar('\n');
+	current = l_a;
+	while (current != NULL)
+	{
+		printf("l_a value - \t%d\n", current->value);
+		printf("Index - %d\n", current->ind);
+		current = current->next;
+	}
+	ft_putchar('\n');
+	// Проверка стека b
 	// current = l_b;
 	// while (current != NULL)
 	// {
@@ -84,8 +82,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack *l_a, t_stack *l_b)
 	// ft_putchar('\n');
 	printf("List size a - \t%d\n", ft_lstsize_ps(l_a));
 	printf("List size b - \t%d\n", ft_lstsize_ps(l_b));
-	// clear_ps(&l_a);
-	// printf("List - \t%p\n", &l_a);
+	ft_lstclear_ps(&l_a);
 }
 
 void	get_sort_ps(t_ps_struct *s_psw, int i, int j)
@@ -119,21 +116,15 @@ int	main(int argc, char **argv)
 	t_ps_struct	s_psw;
 	t_stack *l_a;
 	t_stack *l_b;
+
 	l_a = NULL;
 	l_b = NULL;
-
-
-	// (void)s_a;
-	// (void)s_b;
-
+	s_psw.arr_len = 0;
 	check_isnum(argc, argv);
-
 	s_psw.argc = argc;
 	s_psw.argv = argv;
-
 	get_parse(&s_psw, l_a, l_b);
-	ft_lstclear_ps(l_a);
-	while (1);
+	// while (1);
 
 	return (0);
 }

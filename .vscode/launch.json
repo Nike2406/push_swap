@@ -12,9 +12,8 @@
 			"args": [
 				"100",
 				"542",
-				"3",
-				"-242",
-				"100"
+				"000",
+				"-555"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
