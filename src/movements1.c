@@ -1,68 +1,40 @@
 #include "../push_swap.h"
 
-void	sa(t_stack *l_a)
+void	sab(t_stack **lst)
 {
-	int	tmp;
+	t_stack	*first;
+	t_stack	*middle;
+	t_stack	*last;
 
-	if (l_a == NULL || l_a->next == NULL)
+	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = l_a->value;
-	l_a->value = l_a->next->value;
-	l_a->next->value = tmp;
-	ft_putstr("sa\n");
+	first = *lst;
+	middle = first->next;
+	last = middle->next;
+	first->next = last;
+	middle->next = first;
+	*lst = middle;
 }
 
-void	sb(t_stack *l_b)
+void	ss(t_stack **l_a, t_stack **l_b)
 {
-	int	tmp;
-
-	if (l_b == NULL || l_b->next == NULL)
+	if (*l_a == NULL || (*l_a)->next == NULL)
 		return ;
-	tmp = l_b->value;
-	l_b->value = l_b->next->value;
-	l_b->next->value = tmp;
-	ft_putstr("sb\n");
+	if (*l_b == NULL || (*l_b)->next == NULL)
+		return ;
+	sab(l_a);
+	sab(l_b);
 }
 
-void	ss(t_stack *l_a, t_stack *l_b)
-{
-	int	tmp;
-
-	if (l_a == NULL || l_a->next == NULL)
-		return ;
-	if (l_b == NULL || l_b->next == NULL)
-		return ;
-	tmp = l_a->value;
-	l_a->value = l_a->next->value;
-	l_a->next->value = tmp;
-	tmp = l_b->value;
-	l_b->value = l_b->next->value;
-	l_b->next->value = tmp;
-	ft_putstr("ss\n");
-}
-
-void	pa(t_stack **l_a, t_stack **l_b)
+void	pab(t_stack **from, t_stack **to)
 {
 	t_stack	*tmp;
 
-	if (*l_b == NULL)
+	if (*from == NULL)
 		return ;
-	tmp = *l_b;
-	*l_b = (*l_b)->next;
-	tmp->next = *l_a;
-	*l_a = tmp;
-	ft_putstr("pa\n");
+	tmp = *from;
+	*from = (*from)->next;
+	tmp->next = *to;
+	*to = tmp;
 }
 
-void	pb(t_stack **l_a, t_stack **l_b)
-{
-	t_stack	*tmp;
-
-	if (*l_a == NULL)
-		return ;
-	tmp = *l_a;
-	*l_a = (*l_a)->next;
-	tmp->next = *l_b;
-	*l_b = tmp;
-	ft_putstr("pb\n");
-}

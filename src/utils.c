@@ -4,12 +4,6 @@ void	ft_err(int	code)
 {
 	if (code == 1)
 		ft_putstr("Error\n");
-	else if (code == 2)
-		ft_putstr("Error\n");
-	else if (code == 3)
-		ft_putstr("Error\n");
-	else if (code == 4)
-	ft_putstr("Error\n");
 	else
 		ft_putstr("Unexpected error.\n");
 	exit(code);
@@ -34,7 +28,7 @@ void	check_isnum(int argc, char **argv)
 			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
 				if (argv[i][j] == '-')
 					if (!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9'))
-						ft_err(2);
+						ft_err(1);
 			j++;
 		}
 		i++;
@@ -49,7 +43,7 @@ void	check_repeat(t_ps_struct *s_psw)
 	while (i < s_psw->arr_len - 1)
 	{
 		if (s_psw->int_arr[i] == s_psw->int_arr[i + 1])
-			ft_err(3);
+			ft_err(1);
 		i++;
 	}
 }
@@ -87,11 +81,40 @@ int	ft_atoi_ps(const char *str)
 	{
 		lim = ft_limits_ps(total, str[i], min);
 		if (lim < 1)
-			ft_err(4);
+			ft_err(1);
 		total = (total * 10) + (str[i] - 48);
 		i++;
 		if (!(str[i] >= '0' && str[i] <= '9'))
 			return (total * min);
 	}
 	return (0);
+}
+
+void	get_length(t_ps_struct *s_psw)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 1;
+	char	**tmp;
+	while (s_psw->argv[i])
+	{
+		k = 0;
+		tmp = ft_split(s_psw->argv[i], ' ');
+		j = 0;
+		while (tmp[j])
+		{
+			s_psw->arr_len++;
+			j++;
+		}
+		i++;
+		// Лики Здесь!
+		while (tmp[k])
+		{
+			tmp[k] = NULL;
+			free(tmp[k]);
+		}
+		free(tmp);
+	}
 }
