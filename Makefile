@@ -11,7 +11,8 @@ endif
 
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 SRCS 		= src/push_swap.c \
-			src/utils.c \
+			src/utils1.c \
+			src/utils2.c \
 			src/movements1.c \
 			src/movements2.c \
 			src/movements3.c \

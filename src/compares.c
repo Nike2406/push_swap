@@ -68,7 +68,7 @@ void	less_five(t_ps_struct *s_psw,t_stack **l_a, t_stack **l_b)
 		{
 			pab(l_b, l_a);
 			ft_putstr("pa\n");
-			if ((*l_b)->ind <= (s_psw->arr_len / 2))
+			if ((*l_b)->ind < (s_psw->arr_len / 2))
 			{
 				rra(l_a);
 				ft_putstr("rra\n");
@@ -81,7 +81,7 @@ void	less_five(t_ps_struct *s_psw,t_stack **l_a, t_stack **l_b)
 		}
 		else
 		{
-			if ((*l_b)->ind >= s_psw->arr_len / 2)
+			if ((*l_b)->ind > s_psw->arr_len / 2)
 			{
 				rra(l_a);
 				ft_putstr("rra\n");
@@ -95,7 +95,7 @@ void	less_five(t_ps_struct *s_psw,t_stack **l_a, t_stack **l_b)
 	}
 	while ((*l_a)->ind != 0)
 	{
-		if ((*l_a)->ind >= s_psw->arr_len / 2)
+		if ((*l_a)->ind > s_psw->arr_len / 2)
 		{
 			rra(l_a);
 			ft_putstr("rra\n");
