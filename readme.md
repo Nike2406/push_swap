@@ -1,6 +1,6 @@
 | instructions  | Description   |
 |:-------------:|---------------|
-| sa            | swap first two elements of stack A |
+| sa            | поменяйте местами первые 2 элемента в верхней части стека a |
 | sb            | swap first two elements of stack B |
 | ss            | sa and sb at the same time |
 | pa            | pops the first elememt on B and puts it on top of A |
