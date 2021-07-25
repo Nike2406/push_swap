@@ -1,13 +1,13 @@
 | instructions  | Description   |
 |:-------------:|---------------|
-| sa            | поменяйте местами первые 2 элемента в верхней части стека a |
-| sb            | swap first two elements of stack B |
-| ss            | sa and sb at the same time |
-| pa            | pops the first elememt on B and puts it on top of A |
-| pb            | pops the first elememt on A and puts it on top of B |
-| ra            | rotates stuck A up by one|
-| rb            | rotates stuck B up by one |
-| rr            | rotates both A and B up by one |
-| rra           | rotates stuck A down by one |
-| rrb           | rotates stuck B down by one |
-| rrr           | rotates both A and B down by one |
+| sa            | поменяйте местами первые 2 элемента в верхней части стека A |
+| sb            | поменяйте местами первые 2 элемента в верхней части стека B |
+| ss            | sa и sb одновременно |
+| pa            | взять первый элемент стека В и переместить его на верх стека A |
+| pb            | взять первый элемент стека A и переместить его на верх стека B |
+| ra            | Сдвинуть вверх все элементы стека А на 1 |
+| rb            | Сдвинуть вверх все элементы стека В на 1 |
+| rr            | ra и rb одновременно |
+| rra           | Сдвинуть вниз все элементы стека А на 1 |
+| rrb           | Сдвинуть вниз все элементы стека В на 1 |
+| rrr           | rra и rrb одновременно |
