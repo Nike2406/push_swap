@@ -46,7 +46,6 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 	t_stack	*tmp;
 
 	tmp = lst;
-	tmp->ind = 0;
 	if (!lst)
 		return (NULL);
 	while (tmp->next)

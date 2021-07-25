@@ -16,7 +16,6 @@ void	ra(t_stack **l_a)
 	tmp->next = NULL;
 	last->next = tmp;
 	*l_a = first;
-	ft_putstr("ra\n");
 }
 
 void	rb(t_stack **l_b)
@@ -35,7 +34,6 @@ void	rb(t_stack **l_b)
 	tmp->next = NULL;
 	last->next = tmp;
 	*l_b = first;
-	ft_putstr("rb\n");
 }
 
 void	rr(t_stack **l_a, t_stack **l_b)
@@ -63,5 +61,4 @@ void	rr(t_stack **l_a, t_stack **l_b)
 	tmp->next = NULL;
 	last->next = tmp;
 	*l_b = first;
-	ft_putstr("rb\n");
 }

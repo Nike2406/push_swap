@@ -33,8 +33,7 @@ void		check_repeat(t_ps_struct *s_psw);
 int			ft_atoi_ps(const char *str);
 int			ft_limits_ps(long long total, char const s, int sign);
 void		get_index(t_stack *lst, int *arr, t_ps_struct *s_spw);
-int			gr_murkup(t_stack *lst);
-void		less_five(t_stack **l_a, t_stack **l_b);
+void		less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 void		less_three(t_stack **l_a);
 void		less_three_add(t_stack **l_a, int f, int s, int t);
 

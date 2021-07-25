@@ -1,29 +1,5 @@
 #include "../push_swap.h"
 
-int	gr_murkup(t_stack *lst)
-{
-	int	checks;
-	t_stack	*current;
-	t_stack	*ind_el;
-
-	current = lst;
-	checks = 0;
-	while (current)
-	{
-		ind_el = current;
-		if (current->value < current->next->value)
-		{
-			current = current->next;
-			checks++;
-		}
-		else
-		{
-			continue;
-		}
-	}
-	return (checks);
-}
-
 void	less_three(t_stack **l_a)
 {
 	int	f;
@@ -70,7 +46,7 @@ void	less_three_add(t_stack **l_a, int f, int s, int t)
 	}
 }
 
-void	less_five(t_stack **l_a, t_stack **l_b)
+void	less_five(t_ps_struct *s_psw,t_stack **l_a, t_stack **l_b)
 {
 	pab(l_a, l_b);
 	ft_putstr("pb\n");
@@ -83,26 +59,53 @@ void	less_five(t_stack **l_a, t_stack **l_b)
 	{
 		// pab(l_b, l_a);
 		// ft_putstr("pa\n");
-		if ((*l_a)->value > (*l_b)->value)
+		if ((*l_a)->ind > (*l_b)->ind)
 		{
 			pab(l_b, l_a);
 			ft_putstr("pa\n");
 		}
-		else if (ft_lstlast_ps(*l_a)->value < (*l_b)->value)
+		else if ((ft_lstlast_ps(*l_a))->value < (*l_b)->value)
 		{
 			pab(l_b, l_a);
 			ft_putstr("pa\n");
-			rra(l_a);
-			ft_putstr("ra\n");
+			if ((*l_b)->ind <= (s_psw->arr_len / 2))
+			{
+				rra(l_a);
+				ft_putstr("rra\n");
+			}
+			else
+			{
+				ra(l_a);
+				ft_putstr("ra\n");
+			}
 		}
 		else
 		{
+			if ((*l_b)->ind >= s_psw->arr_len / 2)
+			{
+				rra(l_a);
+				ft_putstr("rra\n");
+			}
+			else
+			{
+				ra(l_a);
+				ft_putstr("ra\n");
+			}
+		}
+	}
+	while ((*l_a)->ind != 0)
+	{
+		if ((*l_a)->ind >= s_psw->arr_len / 2)
+		{
 			rra(l_a);
+			ft_putstr("rra\n");
+		}
+		else
+		{
+			ra(l_a);
 			ft_putstr("ra\n");
 		}
 	}
-	while ((*l_a)->ind == 0)
-		ra(l_a);
 }
 
 void	get_index(t_stack *lst, int *arr, t_ps_struct *s_psw)

@@ -46,7 +46,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	check_repeat(s_psw);
 	get_index(*l_a, int_arr, s_psw);
 	// gr_murkup(l_a, l_b, s_psw);
-	less_five(l_a, l_b);
+	less_five(s_psw, l_a, l_b);
 
 
 	// Проверка массива после сортировки
