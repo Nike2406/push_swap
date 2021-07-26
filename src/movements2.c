@@ -1,64 +1,55 @@
 #include "../push_swap.h"
 
-void	ra(t_stack **l_a)
+void	rab(t_stack **lst)
 {
 	t_stack	*first;
 	t_stack	*last;
 	t_stack	*tmp;
 
-	if (*l_a == NULL || (*l_a)->next == NULL)
+	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = *l_a;
-	first = (*l_a)->next;
-	last = *l_a;
+	tmp = *lst;
+	first = (*lst)->next;
+	last = *lst;
 	while (last->next != NULL)
 		last = last->next;
 	tmp->next = NULL;
 	last->next = tmp;
-	*l_a = first;
-}
-
-void	rb(t_stack **l_b)
-{
-	t_stack *first;
-	t_stack *last;
-	t_stack *tmp;
-
-	if (*l_b == NULL || (*l_b)->next == NULL)
-		return ;
-	tmp = *l_b;
-	first = (*l_b)->next;
-	last = *l_b;
-	while (last->next != NULL)
-		last = last->next;
-	tmp->next = NULL;
-	last->next = tmp;
-	*l_b = first;
+	*lst = first;
 }
 
 void	rr(t_stack **l_a, t_stack **l_b)
 {
+	if (*l_a == NULL || (*l_a)->next == NULL || \
+		*l_b == NULL || (*l_b)->next == NULL)
+		return ;
+	rab(l_a);
+	rab(l_b);
+}
+
+void	rrab(t_stack **lst)
+{
 	t_stack	*first;
 	t_stack	*last;
 	t_stack	*tmp;
 
+	if (*lst == NULL || (*lst)->next == NULL)
+		return ;
+	first = *lst;
+	tmp = *lst;
+	while (tmp->next->next != NULL)
+		tmp = tmp->next;
+	last = tmp->next;
+	tmp->next = NULL;
+	last->next = first;
+	*lst = last;
+}
+
+void	rrr(t_stack **l_a, t_stack **l_b)
+{
 	if (*l_a == NULL || (*l_a)->next == NULL || \
 		*l_b == NULL || (*l_b)->next == NULL)
 		return ;
-	tmp = *l_a;
-	first = (*l_a)->next;
-	last = *l_a;
-	while (last->next != NULL)
-		last = last->next;
-	tmp->next = NULL;
-	last->next = tmp;
-	*l_a = first;
-	tmp = *l_b;
-	first = (*l_b)->next;
-	last = *l_b;
-	while (last->next != NULL)
-		last = last->next;
-	tmp->next = NULL;
-	last->next = tmp;
-	*l_b = first;
+	rrab(l_a);
+	rrab(l_b);
 }

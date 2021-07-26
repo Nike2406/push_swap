@@ -15,7 +15,7 @@ void	less_three(t_stack **lst, t_ps_struct *s_psw)
 	else if ((*lst)->value > s && s > t && (*lst)->value > t)
 	{
 		sab(lst);
-		rra(lst);
+		rrab(lst);
 		ft_putstr_ps("sa\n", s_psw);
 		ft_putstr_ps("rra\n", s_psw);
 	}
@@ -27,19 +27,19 @@ void	less_three_add(t_stack **lst, int s, int t, t_ps_struct *s_psw)
 {
 	if ((*lst)->value > s && s < t && (*lst)->value > t)
 	{
-		ra(lst);
+		rab(lst);
 		ft_putstr_ps("ra\n", s_psw);
 	}
 	else if ((*lst)->value < s && s > t && (*lst)->value < t)
 	{
 		sab(lst);
-		ra(lst);
+		rab(lst);
 		ft_putstr_ps("sa\n", s_psw);
 		ft_putstr_ps("ra\n", s_psw);
 	}
 	else if ((*lst)->value < s && s > t && (*lst)->value > t)
 	{
-		rra(lst);
+		rrab(lst);
 		ft_putstr_ps("rra\n", s_psw);
 	}
 }
@@ -56,14 +56,14 @@ void	less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		}
 		else
 		{
-			ra(l_a);
+			rab(l_a);
 			ft_putstr_ps("ra\n", s_psw);
 		}
 	}
 	less_three(l_a, s_psw);
 	if (((*l_b)->ind) < ((*l_b)->next->ind))
 	{
-		rb(l_b);
+		rab(l_b);
 		ft_putstr_ps("rb\n", s_psw);
 	}
 	pab(l_b, l_a);
@@ -73,7 +73,7 @@ void	less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	printf("\nMove count - %d\n\n", s_psw->mv_cnt);
 }
 
-void	get_index(t_stack *lst, int *arr, t_ps_struct *s_psw)
+void	get_index(t_stack *lst, t_ps_struct *s_psw)
 {
 	int		i;
 
@@ -82,7 +82,7 @@ void	get_index(t_stack *lst, int *arr, t_ps_struct *s_psw)
 		i = 0;
 		while (i < s_psw->arr_len)
 		{
-			if (lst->value == arr[i])
+			if (lst->value == s_psw->int_arr[i])
 			{
 				lst->ind = i;
 				break;

@@ -1,17 +1,7 @@
 #include "../push_swap.h"
 
-void	ft_swap(int *a, int *b)
+void	fill_arr_list(t_ps_struct *s_psw, t_stack **lst)
 {
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
-{
-	int	*int_arr;
 	int	i;
 	int	j;
 	int	s;
@@ -19,8 +9,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 
 	i = 0;
 	j = 1;
-	get_length(s_psw);
-	int_arr = ft_calloc(sizeof(int), s_psw->arr_len);
+	s_psw->int_arr = ft_calloc(sizeof(int), s_psw->arr_len);
 	while (s_psw->argv[j])
 	{
 		tmp_arr = ft_split(s_psw->argv[j], ' ');
@@ -28,42 +17,66 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		while (tmp_arr[s])
 		{
 			check_isnum(tmp_arr[s]);
-			int_arr[i] = ft_atoi_ps(tmp_arr[s]);
-			// tmp = ft_lstnew_ps(ft_atoi_ps(tmp_arr[s]));
-			ft_lstadd_back_ps(l_a, ft_lstnew_ps(ft_atoi_ps(tmp_arr[s])));
+			s_psw->int_arr[i] = ft_atoi_ps(tmp_arr[s]);
+			ft_lstadd_back_ps(lst, ft_lstnew_ps(ft_atoi_ps(tmp_arr[s])));
 			free(tmp_arr[s]);
 			s++;
 			i++;
-			// printf("i - %d\n", i);
-			// s_psw->arr_len = i;
 		}
 		free(tmp_arr);
 		j++;
 	}
+}
 
-	s_psw->int_arr = int_arr;
-
-	get_sort_arr_ps(s_psw, 0, i - 1);
+void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
+{
+	get_length(s_psw);
+	fill_arr_list(s_psw, l_a);
+	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
 	check_repeat(s_psw);
-	get_index(*l_a, int_arr, s_psw);
-	// gr_murkup(l_a, l_b, s_psw);
-	less_five(s_psw, l_a, l_b);
+	if (ft_lstsize_ps((*l_a)) < 3)
+	{
+		if ((*l_a)->value > (*l_a)->next->value)
+		{
+			sab(l_a);
+			ft_putstr("sa\n");
+		}
+		return ;
+	}
+	get_index(*l_a, s_psw);
+
+	s_psw->mv_cnt = 0;
+	while (ft_lstsize_ps(*l_a) > 3)
+	{
+		if ((*l_a)->ind > s_psw->arr_len - 4)
+		{
+			rab(l_a);
+			ft_putstr_ps("ra\n", s_psw);
+		}
+		else
+		{
+			pab(l_a, l_b);
+			ft_putstr_ps("pb\n", s_psw);
+		}
+	}
+	less_three(l_a, s_psw);
+	printf("\nMove count - %d\n\n", s_psw->mv_cnt);
+	// less_five(s_psw, l_a, l_b);
 
 
 	// Проверка массива после сортировки
-	i = 0;
+	int i = 0;
 	while (i < s_psw->arr_len)
 	{
 		printf("Array srt - \t%d\n", s_psw->int_arr[i]);
-		// printf("Value l_a->value - \t%d\n", l_a->value);
 		i++;
 	}
 	write(1, "\n", 1);
 	// Очистка временного массива
-	i = 0;
-	while (int_arr[i])
-		int_arr[i++] = 0;
-	free(int_arr);
+	// i = 0;
+	// while (int_arr[i])
+	// 	int_arr[i++] = 0;
+	// free(int_arr);
 
 	// Проверка стека а
 	t_stack *current;
@@ -89,6 +102,20 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	printf("List size a - \t%d\n", ft_lstsize_ps(*l_a));
 	printf("List size b - \t%d\n", ft_lstsize_ps(*l_b));
 	ft_lstclear_ps(l_a);
+}
+
+// void	before_list_sort()
+// {
+
+// }
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 void	get_sort_arr_ps(t_ps_struct *s_psw, int i, int j)

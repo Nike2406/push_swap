@@ -15,7 +15,6 @@ SRCS 		= src/push_swap.c \
 			src/utils2.c \
 			src/movements1.c \
 			src/movements2.c \
-			src/movements3.c \
 			src/lst_functions.c \
 			src/compares.c \
 #INCLUDE		= push_swap.h

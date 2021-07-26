@@ -37,14 +37,15 @@ void		get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 void		get_sort_arr_ps(t_ps_struct *s_psw, int i, int j);
 void		ft_swap(int *a, int *b);
 void		get_length(t_ps_struct *s_psw);
+void		fill_arr_list(t_ps_struct *s_psw, t_stack **lst);
 
-// void		ft_err(int	code);
+void		ft_err(int	code);
 void		check_isnum(char *argv);
 void		check_repeat(t_ps_struct *s_psw);
 int			ft_atoi_ps(const char *str);
 int			ft_limits_ps(long long total, char const s, int sign);
 void		ft_putstr_ps(char *a, t_ps_struct *s_psw);
-void		get_index(t_stack *lst, int *arr, t_ps_struct *s_spw);
+void		get_index(t_stack *lst, t_ps_struct *s_spw);
 void		less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 void		less_three(t_stack **l_a, t_ps_struct *s_psw);
 void		less_three_add(t_stack **l_a, int s, int t, t_ps_struct *s_psw);
@@ -59,11 +60,9 @@ int			ft_lstsize_ps(t_stack *lst);
 void		sab(t_stack **lst);
 void		ss(t_stack **l_a, t_stack **l_b);
 void		pab(t_stack **from, t_stack **to);
-void		ra(t_stack **l_a);
-void		rb(t_stack **l_b);
+void		rab(t_stack **lst);
 void		rr(t_stack **l_a, t_stack **l_b);
-void		rra(t_stack **l_a);
-void		rrb(t_stack **l_b);
+void		rrab(t_stack **lst);
 void		rrr(t_stack **l_a, t_stack **l_b);
 
 #endif
