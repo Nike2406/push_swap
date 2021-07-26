@@ -27,6 +27,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		s = 0;
 		while (tmp_arr[s])
 		{
+			check_isnum(tmp_arr[s]);
 			int_arr[i] = ft_atoi_ps(tmp_arr[s]);
 			// tmp = ft_lstnew_ps(ft_atoi_ps(tmp_arr[s]));
 			ft_lstadd_back_ps(l_a, ft_lstnew_ps(ft_atoi_ps(tmp_arr[s])));
@@ -42,7 +43,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 
 	s_psw->int_arr = int_arr;
 
-	get_sort_ps(s_psw, 0, i - 1);
+	get_sort_arr_ps(s_psw, 0, i - 1);
 	check_repeat(s_psw);
 	get_index(*l_a, int_arr, s_psw);
 	// gr_murkup(l_a, l_b, s_psw);
@@ -90,7 +91,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	ft_lstclear_ps(l_a);
 }
 
-void	get_sort_ps(t_ps_struct *s_psw, int i, int j)
+void	get_sort_arr_ps(t_ps_struct *s_psw, int i, int j)
 {
 	int	mdl;
 	int	f;
@@ -109,9 +110,9 @@ void	get_sort_ps(t_ps_struct *s_psw, int i, int j)
 			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
 	}
 	if (i < l)
-		get_sort_ps(s_psw, i, l);
+		get_sort_arr_ps(s_psw, i, l);
 	if (j > f)
-		get_sort_ps(s_psw, f, j);
+		get_sort_arr_ps(s_psw, f, j);
 }
 
 int	main(int argc, char **argv)
@@ -125,7 +126,6 @@ int	main(int argc, char **argv)
 	l_a = NULL;
 	l_b = NULL;
 	s_psw.arr_len = 0;
-	check_isnum(argc, argv);
 	s_psw.argc = argc;
 	s_psw.argv = argv;
 	get_parse(&s_psw, &l_a, &l_b);

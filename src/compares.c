@@ -1,111 +1,76 @@
 #include "../push_swap.h"
 
-void	less_three(t_stack **l_a)
+void	less_three(t_stack **lst, t_ps_struct *s_psw)
 {
-	int	f;
 	int	s;
 	int	t;
 
-	f = (*l_a)->value;
-	s = (*l_a)->next->value;
-	t = (*l_a)->next->next->value;
-	if (f > s && s < t && f < t)
+	s = (*lst)->next->value;
+	t = (*lst)->next->next->value;
+	if ((*lst)->value > s && s < t && (*lst)->value < t)
 	{
-		sab(l_a);
-		ft_putstr("sa\n");
+		sab(lst);
+		ft_putstr_ps("sa\n", s_psw);
 	}
-	else if (f > s && s > t && f > t)
+	else if ((*lst)->value > s && s > t && (*lst)->value > t)
 	{
-		sab(l_a);
-		rra(l_a);
-		ft_putstr("sa\n");
-		ft_putstr("rra\n");
+		sab(lst);
+		rra(lst);
+		ft_putstr_ps("sa\n", s_psw);
+		ft_putstr_ps("rra\n", s_psw);
 	}
 	else
-		less_three_add(l_a, f, s, t);
+		less_three_add(lst, s, t, s_psw);
 }
 
-void	less_three_add(t_stack **l_a, int f, int s, int t)
+void	less_three_add(t_stack **lst, int s, int t, t_ps_struct *s_psw)
 {
-	if (f > s && s < t && f > t)
+	if ((*lst)->value > s && s < t && (*lst)->value > t)
 	{
-		ra(l_a);
-		ft_putstr("ra\n");
+		ra(lst);
+		ft_putstr_ps("ra\n", s_psw);
 	}
-	else if (f < s && s > t && f < t)
+	else if ((*lst)->value < s && s > t && (*lst)->value < t)
 	{
-		sab(l_a);
-		ra(l_a);
-		ft_putstr("sa\n");
-		ft_putstr("ra\n");
+		sab(lst);
+		ra(lst);
+		ft_putstr_ps("sa\n", s_psw);
+		ft_putstr_ps("ra\n", s_psw);
 	}
-	else if (f < s && s > t && f > t)
+	else if ((*lst)->value < s && s > t && (*lst)->value > t)
 	{
-		rra(l_a);
-		ft_putstr("rra\n");
+		rra(lst);
+		ft_putstr_ps("rra\n", s_psw);
 	}
 }
 
-void	less_five(t_ps_struct *s_psw,t_stack **l_a, t_stack **l_b)
+void	less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 {
-	pab(l_a, l_b);
-	ft_putstr("pb\n");
-	pab(l_a, l_b);
-	ft_putstr("pb\n");
-	less_three(l_a);
-	ft_putstr("-----------\n");
-	// Сделать проверку на количество действий!
-	while (*l_b != NULL)
+	s_psw->mv_cnt = 0;
+	while ((*l_a)->next->next->next != NULL)
 	{
-		// pab(l_b, l_a);
-		// ft_putstr("pa\n");
-		if ((*l_a)->ind > (*l_b)->ind)
+		if ((*l_a)->ind < s_psw->arr_len / 2)
 		{
-			pab(l_b, l_a);
-			ft_putstr("pa\n");
-		}
-		else if ((ft_lstlast_ps(*l_a))->value < (*l_b)->value)
-		{
-			pab(l_b, l_a);
-			ft_putstr("pa\n");
-			if ((*l_b)->ind < (s_psw->arr_len / 2))
-			{
-				rra(l_a);
-				ft_putstr("rra\n");
-			}
-			else
-			{
-				ra(l_a);
-				ft_putstr("ra\n");
-			}
-		}
-		else
-		{
-			if ((*l_b)->ind > s_psw->arr_len / 2)
-			{
-				rra(l_a);
-				ft_putstr("rra\n");
-			}
-			else
-			{
-				ra(l_a);
-				ft_putstr("ra\n");
-			}
-		}
-	}
-	while ((*l_a)->ind != 0)
-	{
-		if ((*l_a)->ind > s_psw->arr_len / 2)
-		{
-			rra(l_a);
-			ft_putstr("rra\n");
+			pab(l_a, l_b);
+			ft_putstr_ps("pb\n", s_psw);
 		}
 		else
 		{
 			ra(l_a);
-			ft_putstr("ra\n");
+			ft_putstr_ps("ra\n", s_psw);
 		}
 	}
+	less_three(l_a, s_psw);
+	if (((*l_b)->ind) < ((*l_b)->next->ind))
+	{
+		rb(l_b);
+		ft_putstr_ps("rb\n", s_psw);
+	}
+	pab(l_b, l_a);
+	ft_putstr_ps("pa\n", s_psw);
+	pab(l_b, l_a);
+	ft_putstr_ps("pa\n", s_psw);
+	printf("\nMove count - %d\n\n", s_psw->mv_cnt);
 }
 
 void	get_index(t_stack *lst, int *arr, t_ps_struct *s_psw)

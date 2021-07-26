@@ -9,29 +9,27 @@ void	ft_err(int	code)
 	exit(code);
 }
 
-void	check_isnum(int argc, char **argv)
+void	check_isnum(char *argv)
 {
-	int			i;
-	int			j;
+	int	j;
+	int	f;
 
-	i = 1;
-	// Проверка на аргументы (?)
-	(void)argc;
-	// if (argc < 3)
-	// 	ft_err(1);
-
-	while (argv[i])
+	j = 0;
+	f = 0;
+	while (argv[j])
 	{
-		j = 0;
-		while (argv[i][j])
+		if (!(argv[j] >= '0' && argv[j] <= '9'))
 		{
-			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				if (argv[i][j] == '-')
-					if (!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9'))
-						ft_err(1);
-			j++;
+			if (argv[j] == '-' && !f && !j)
+			{
+				f++;
+				if (!(argv[j + 1] >= '0' && argv[j + 1] <= '9'))
+					ft_err(1);
+			}
+			else
+				ft_err(1);
 		}
-		i++;
+		j++;
 	}
 }
 

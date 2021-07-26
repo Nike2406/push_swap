@@ -20,22 +20,34 @@ typedef struct s_ps_struct
 	int		*int_arr;
 	int		*ps_arr;
 	int		arr_len;
+	int		mv_cnt;
 }	t_ps_struct;
 
+typedef struct s_move
+{
+	int	l_size;
+	int	pos;
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+}	t_move;
+
 void		get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
-void		get_sort_ps(t_ps_struct *s_psw, int i, int j);
+void		get_sort_arr_ps(t_ps_struct *s_psw, int i, int j);
 void		ft_swap(int *a, int *b);
 void		get_length(t_ps_struct *s_psw);
 
 // void		ft_err(int	code);
-void		check_isnum(int argc, char **argv);
+void		check_isnum(char *argv);
 void		check_repeat(t_ps_struct *s_psw);
 int			ft_atoi_ps(const char *str);
 int			ft_limits_ps(long long total, char const s, int sign);
+void		ft_putstr_ps(char *a, t_ps_struct *s_psw);
 void		get_index(t_stack *lst, int *arr, t_ps_struct *s_spw);
 void		less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
-void		less_three(t_stack **l_a);
-void		less_three_add(t_stack **l_a, int f, int s, int t);
+void		less_three(t_stack **l_a, t_ps_struct *s_psw);
+void		less_three_add(t_stack **l_a, int s, int t, t_ps_struct *s_psw);
 
 void		ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void		ft_lstadd_front_ps(t_stack **lst, t_stack *new);
