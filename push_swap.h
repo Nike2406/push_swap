@@ -37,7 +37,15 @@ void		get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 void		get_sort_arr_ps(t_ps_struct *s_psw, int i, int j);
 void		ft_swap(int *a, int *b);
 void		get_length(t_ps_struct *s_psw);
+
 void		fill_arr_list(t_ps_struct *s_psw, t_stack **lst);
+void		init_move(t_move *moves);
+void		lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b);
+int			cnt_moves(t_move *moves, t_stack **l_a, t_stack **l_b, int index);
+int			get_pos(t_stack *lst, int index);
+int			get_pos_in(int index, t_stack *lst);
+int			get_min_ind(t_stack *lst);
+void		sort_elem(t_move *moves, t_stack **l_a, t_stack **l_b);
 
 void		ft_err(int	code);
 void		check_isnum(char *argv);

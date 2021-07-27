@@ -46,7 +46,6 @@ void	less_three_add(t_stack **lst, int s, int t, t_ps_struct *s_psw)
 
 void	less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 {
-	s_psw->mv_cnt = 0;
 	while ((*l_a)->next->next->next != NULL)
 	{
 		if ((*l_a)->ind < s_psw->arr_len / 2)

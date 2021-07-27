@@ -45,7 +45,6 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	}
 	get_index(*l_a, s_psw);
 
-	s_psw->mv_cnt = 0;
 	while (ft_lstsize_ps(*l_a) > 3)
 	{
 		if ((*l_a)->ind > s_psw->arr_len - 4)
@@ -60,10 +59,49 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		}
 	}
 	less_three(l_a, s_psw);
-	printf("\nMove count - %d\n\n", s_psw->mv_cnt);
+
+
+
 	// less_five(s_psw, l_a, l_b);
 
 
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void	get_sort_arr_ps(t_ps_struct *s_psw, int i, int j)
+{
+	int	mdl;
+	int	f;
+	int	l;
+
+	f = i;
+	l = j;
+	mdl = s_psw->int_arr[(f + l) / 2];
+	while (f <= l)
+	{
+		while (s_psw->int_arr[f] < mdl)
+			f++;
+		while (s_psw->int_arr[l] > mdl)
+			l--;
+		if (f <= l)
+			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
+	}
+	if (i < l)
+		get_sort_arr_ps(s_psw, i, l);
+	if (j > f)
+		get_sort_arr_ps(s_psw, f, j);
+}
+
+void	check(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
+{
 	// Проверка массива после сортировки
 	int i = 0;
 	while (i < s_psw->arr_len)
@@ -101,61 +139,29 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	ft_putchar('\n');
 	printf("List size a - \t%d\n", ft_lstsize_ps(*l_a));
 	printf("List size b - \t%d\n", ft_lstsize_ps(*l_b));
-	ft_lstclear_ps(l_a);
-}
-
-// void	before_list_sort()
-// {
-
-// }
-
-void	ft_swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-void	get_sort_arr_ps(t_ps_struct *s_psw, int i, int j)
-{
-	int	mdl;
-	int	f;
-	int	l;
-
-	f = i;
-	l = j;
-	mdl = s_psw->int_arr[(f + l) / 2];
-	while (f <= l)
-	{
-		while (s_psw->int_arr[f] < mdl)
-			f++;
-		while (s_psw->int_arr[l] > mdl)
-			l--;
-		if (f <= l)
-			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
-	}
-	if (i < l)
-		get_sort_arr_ps(s_psw, i, l);
-	if (j > f)
-		get_sort_arr_ps(s_psw, f, j);
 }
 
 int	main(int argc, char **argv)
 {
-	// t_push_swap	s_a;
-	// t_push_swap	s_b;
 	t_ps_struct	s_psw;
 	t_stack *l_a;
 	t_stack *l_b;
+	t_move	moves;
 
 	l_a = NULL;
 	l_b = NULL;
 	s_psw.arr_len = 0;
 	s_psw.argc = argc;
 	s_psw.argv = argv;
+	s_psw.mv_cnt = 0;
 	get_parse(&s_psw, &l_a, &l_b);
+	// while (l_b)
+		lets_sort(&moves, &l_a, &l_b);
+	check(&s_psw, &l_a, &l_b);
+
+	printf("\nMove count - %d\n\n", s_psw.mv_cnt);
+
+	ft_lstclear_ps(&l_a);
 	// while (1);
 
 	return (0);

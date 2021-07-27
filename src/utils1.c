@@ -92,13 +92,11 @@ void	get_length(t_ps_struct *s_psw)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 1;
 	char	**tmp;
 	while (s_psw->argv[i])
 	{
-		k = 0;
 		tmp = ft_split(s_psw->argv[i], ' ');
 		j = 0;
 		while (tmp[j])
@@ -107,11 +105,11 @@ void	get_length(t_ps_struct *s_psw)
 			j++;
 		}
 		i++;
-		// Лики Здесь!
-		while (tmp[k])
+		j = 0;
+		while (tmp[j])
 		{
-			tmp[k] = NULL;
-			free(tmp[k]);
+			free(tmp[j]);
+			j++;
 		}
 		free(tmp);
 	}

@@ -17,6 +17,7 @@ SRCS 		= src/push_swap.c \
 			src/movements2.c \
 			src/lst_functions.c \
 			src/compares.c \
+			src/sort.c \
 #INCLUDE		= push_swap.h
 LIBFT_A		= libft/libft.a
 
