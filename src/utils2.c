@@ -86,6 +86,23 @@ int	cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index)
 	else
 		moves->rra = moves->l_size - moves->pos + 1;
 	total = moves->ra + moves->rra + moves->rb + moves->rrb;
+	int	i;
+	i = moves->ra;
+	if (moves->ra > moves->rb)
+		i = moves->rb;
+	while (i)
+	{
+		total--;
+		i--;
+	}
+	i = moves->rra;
+	if (moves->rra > moves->rrb)
+		i = moves->rrb;
+	while (i)
+	{
+		total--;
+		i--;
+	}
 	return (total);
 }
 
@@ -98,7 +115,6 @@ void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 
 	min_move = -1;
 	tmp = *l_b;
-	// init_move(moves);
 	while (tmp)
 	{
 		move = cnt_moves(moves, *l_a, *l_b, tmp->ind);

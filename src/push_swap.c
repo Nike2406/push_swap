@@ -158,7 +158,7 @@ int	main(int argc, char **argv)
 	while (l_b)
 		lets_sort(&moves, &l_a, &l_b, &s_psw);
 	last_sort(&moves, &l_a, &s_psw);
-	check(&s_psw, &l_a, &l_b);
+	// check(&s_psw, &l_a, &l_b);
 
 	printf("\nMove count - %d\n\n", s_psw.mv_cnt);
 
