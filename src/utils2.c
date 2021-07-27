@@ -68,25 +68,24 @@ int	get_pos_in(int index, t_stack *lst)
 	}
 }
 
-int	cnt_moves(t_move *moves, t_stack **l_a, t_stack **l_b, int index)
+int	cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index)
 {
 	int	total;
 
 	init_move(moves);
-	moves->l_size = ft_lstsize_ps(*l_b);
-	moves->pos = get_pos(*l_b, index);
-	if (moves->l_size / 2 <= moves->pos)
+	moves->l_size = ft_lstsize_ps(l_b);
+	moves->pos = get_pos(l_b, index);
+	if (moves->l_size / 2 >= moves->pos)
 		moves->rb = moves->pos - 1;
 	else if (moves->l_size > 1)
 		moves->rrb = moves->l_size - moves->pos + 1;
-	moves->l_size = ft_lstsize_ps(*l_a);
-	moves->pos = get_pos_in(index, *l_a);
+	moves->l_size = ft_lstsize_ps(l_a);
+	moves->pos = get_pos_in(index, l_a);
 	if (moves->l_size / 2 >= moves->pos)
 		moves->ra = moves->pos - 1;
 	else
 		moves->rra = moves->l_size - moves->pos + 1;
 	total = moves->ra + moves->rra + moves->rb + moves->rrb;
-	// printf("total - %d\n", total);
 	return (total);
 }
 
@@ -99,10 +98,10 @@ void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 
 	min_move = -1;
 	tmp = *l_b;
-	init_move(moves);
+	// init_move(moves);
 	while (tmp)
 	{
-		move = cnt_moves(moves, l_a, l_b, tmp->ind);
+		move = cnt_moves(moves, *l_a, *l_b, tmp->ind);
 		if (min_move == -1 || move < min_move)
 		{
 			min_move = move;
@@ -110,7 +109,7 @@ void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 		}
 		tmp = tmp->next;
 	}
-	min_move = cnt_moves(moves, l_a, l_b, min_elem->ind);
+	min_move = cnt_moves(moves, *l_a, *l_b, min_elem->ind);
 	sort_elem(moves, l_a, l_b, s_psw);
 }
 

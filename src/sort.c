@@ -66,7 +66,7 @@ void	last_sort(t_move *moves, t_stack **l_a, t_ps_struct *s_psw)
 
 void	push_elem(t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 {
-	if (*l_b)
+	if (l_b)
 	{
 		pab(l_b, l_a);
 		ft_putstr_ps("pa\n", s_psw);
