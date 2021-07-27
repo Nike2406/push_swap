@@ -90,7 +90,7 @@ int	cnt_moves(t_move *moves, t_stack **l_a, t_stack **l_b, int index)
 	return (total);
 }
 
-void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b)
+void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 {
 	int	min_move;
 	int	move;
@@ -111,7 +111,7 @@ void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b)
 		tmp = tmp->next;
 	}
 	min_move = cnt_moves(moves, l_a, l_b, min_elem->ind);
-	sort_elem(moves, l_a, l_b);
+	sort_elem(moves, l_a, l_b, s_psw);
 }
 
 void	ft_putstr_ps(char *a, t_ps_struct *s_psw)
