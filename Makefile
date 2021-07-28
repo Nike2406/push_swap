@@ -51,13 +51,17 @@ libft:
 
 clean:
 	rm -f src/*.o
+	rm -f get_next_line/*.o
 	make -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f checker
 	rm -f push_swap
-	rm -f a.out*
+	rm -rf a.out*
+	rm -rf */a.out*
+	rm -rf *.gch
+	rm -rf */*.gch
 	rm -f libft/libft.a
 
 re: fclean all
