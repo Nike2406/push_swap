@@ -22,8 +22,9 @@ SRCS 		= src/push_swap.c \
 			src/lst_functions.c \
 			src/compares.c \
 			src/sort.c
-SRCS_BONUS	= get_next_line/get_next_line.c \
-			src/checker.c
+SRCS_BONUS	= src/checker.c \
+			src/utils_bonus.c \
+			get_next_line/get_next_line.c
 INCLUDE		= push_swap.h \
 			get_next_line/get_next_line.h
 LIBFT_A		= libft/libft.a

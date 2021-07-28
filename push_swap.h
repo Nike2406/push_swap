@@ -13,6 +13,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_bonus
+{
+	char			*content;
+	struct s_bonus	*next;
+}	t_bonus;
+
 typedef struct s_ps_struct
 {
 	char	**argv;
@@ -72,6 +78,11 @@ t_stack		*ft_lstlast_ps(t_stack *lst);
 t_stack		*ft_lstnew_ps(int content);
 int			ft_lstsize_ps(t_stack *lst);
 
+void		ft_lstadd_back_b_ps(t_bonus **lst, t_bonus *new);
+t_bonus		*ft_lstlast_b_ps(t_bonus *lst);
+t_bonus		*ft_lstnew_b_ps(char *content);
+int			ft_lstsize_b_ps(t_bonus *lst);
+
 void		sab(t_stack **lst);
 void		ss(t_stack **l_a, t_stack **l_b);
 void		pab(t_stack **from, t_stack **to);
@@ -79,5 +90,7 @@ void		rab(t_stack **lst);
 void		rr(t_stack **l_a, t_stack **l_b);
 void		rrab(t_stack **lst);
 void		rrr(t_stack **l_a, t_stack **l_b);
+
+void	check(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 
 #endif
