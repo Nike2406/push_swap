@@ -1,4 +1,8 @@
-NAME 		= push_swap
+ifeq ($(MAKECMDGOALS),bonus)
+	NAME = checker
+else
+	NAME = push_swap
+endif
 FLAGS		= -Wall -Wextra -Werror
 CFLAGS		= $(FLAGS) -I.
 CC			= gcc
@@ -17,8 +21,11 @@ SRCS 		= src/push_swap.c \
 			src/movements2.c \
 			src/lst_functions.c \
 			src/compares.c \
-			src/sort.c \
-#INCLUDE		= push_swap.h
+			src/sort.c
+SRCS_BONUS	= get_next_line/get_next_line.c \
+			src/checker.c
+INCLUDE		= push_swap.h \
+			get_next_line/get_next_line.h
 LIBFT_A		= libft/libft.a
 
 .PHONY: all clean fclean re bonus libft norm
@@ -29,7 +36,7 @@ LIBFT_A		= libft/libft.a
 all: libft $(NAME)
 
 ${NAME}: $(OBJS) $(INCLUDE)
-	$(CC) $(OBJS) $(LIBFT_A) -I. -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
 
 bonus: libft $(NAME)
 
@@ -48,7 +55,9 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f ./a.out
+	rm -f checker
+	rm -f push_swap
+	rm -f a.out*
 	rm -f libft/libft.a
 
 re: fclean all
