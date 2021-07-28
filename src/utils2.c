@@ -106,7 +106,7 @@ int	cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index)
 	return (total);
 }
 
-void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
+void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b)
 {
 	int	min_move;
 	int	move;
@@ -126,20 +126,5 @@ void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 		tmp = tmp->next;
 	}
 	min_move = cnt_moves(moves, *l_a, *l_b, min_elem->ind);
-	sort_elem(moves, l_a, l_b, s_psw);
-}
-
-void	ft_putstr_ps(char *a, t_ps_struct *s_psw)
-{
-	int	i;
-
-	if (!a)
-		return ;
-	i = 0;
-	while (a[i])
-	{
-		write(1, &a[i], 1);
-		i++;
-	}
-	s_psw->mv_cnt++;
+	sort_elem(moves, l_a, l_b);
 }

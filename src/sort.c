@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	sort_elem(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
+void	sort_elem(t_move *moves, t_stack **l_a, t_stack **l_b)
 {
 	while (moves->ra || moves->rra || moves->rb || moves->rrb)
 	{
@@ -9,50 +9,50 @@ void	sort_elem(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
 			rr(l_a, l_b);
 			moves->ra--;
 			moves->rb--;
-			ft_putstr_ps("rr\n", s_psw);
+			ft_putstr("rr\n");
 		}
 		else if (moves->rra && moves->rrb)
 		{
 			rrr(l_a, l_b);
 			moves->rra--;
 			moves->rrb--;
-			ft_putstr_ps("rrr\n", s_psw);
+			ft_putstr("rrr\n");
 		}
 		else
-			sort_elem_add(moves, l_a, l_b, s_psw);
+			sort_elem_add(moves, l_a, l_b);
 	}
-	push_elem(l_a, l_b, s_psw);
+	push_elem(l_a, l_b);
 }
 
-void	sort_elem_add(t_move *moves, t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
+void	sort_elem_add(t_move *moves, t_stack **l_a, t_stack **l_b)
 {
 	if (moves->ra > 0)
 	{
 		rab(l_a);
 		moves->ra--;
-		ft_putstr_ps("ra\n", s_psw);
+		ft_putstr("ra\n");
 	}
 	else if (moves->rb > 0)
 	{
 		rab(l_b);
 		moves->rb--;
-		ft_putstr_ps("rb\n", s_psw);
+		ft_putstr("rb\n");
 	}
 	else if (moves->rra > 0)
 	{
 		rrab(l_a);
 		moves->rra--;
-		ft_putstr_ps("rra\n", s_psw);
+		ft_putstr("rra\n");
 	}
 	else if (moves->rrb > 0)
 	{
 		rrab(l_b);
 		moves->rrb--;
-		ft_putstr_ps("rrb\n", s_psw);
+		ft_putstr("rrb\n");
 	}
 }
 
-void	last_sort(t_move *moves, t_stack **l_a, t_ps_struct *s_psw)
+void	last_sort(t_move *moves, t_stack **l_a)
 {
 	init_move(moves);
 	moves->l_size = ft_lstsize_ps(*l_a);
@@ -61,14 +61,14 @@ void	last_sort(t_move *moves, t_stack **l_a, t_ps_struct *s_psw)
 		moves->ra = moves->pos - 1;
 	else if (moves->l_size > 1)
 		moves->rra = moves->l_size - moves->pos + 1;
-	sort_elem(moves, l_a, NULL, s_psw);
+	sort_elem(moves, l_a, NULL);
 }
 
-void	push_elem(t_stack **l_a, t_stack **l_b, t_ps_struct *s_psw)
+void	push_elem(t_stack **l_a, t_stack **l_b)
 {
 	if (l_b)
 	{
 		pab(l_b, l_a);
-		ft_putstr_ps("pa\n", s_psw);
+		ft_putstr("pa\n");
 	}
 }

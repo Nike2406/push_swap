@@ -13,19 +13,6 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 	tmp->next = new;
 }
 
-void	ft_lstadd_front_ps(t_stack **lst, t_stack *new)
-{
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	if (!new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
-
 void	ft_lstclear_ps(t_stack **lst)
 {
 	t_stack	*tmp;
