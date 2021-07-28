@@ -68,8 +68,8 @@ int			ft_limits_ps(long long total, char const s, int sign);
 void		ft_putstr_ps(char *a, t_ps_struct *s_psw);
 void		get_index(t_stack *lst, t_ps_struct *s_spw);
 void		less_five(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
-void		less_three(t_stack **l_a, t_ps_struct *s_psw);
-void		less_three_add(t_stack **l_a, int s, int t, t_ps_struct *s_psw);
+void		three(t_stack **l_a, t_ps_struct *s_psw);
+void		three_add(t_stack **l_a, int s, int t, t_ps_struct *s_psw);
 
 void		ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void		ft_lstadd_front_ps(t_stack **lst, t_stack *new);

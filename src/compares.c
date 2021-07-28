@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	less_three(t_stack **lst, t_ps_struct *s_psw)
+void	three(t_stack **lst, t_ps_struct *s_psw)
 {
 	int	s;
 	int	t;
@@ -20,10 +20,10 @@ void	less_three(t_stack **lst, t_ps_struct *s_psw)
 		ft_putstr_ps("rra\n", s_psw);
 	}
 	else
-		less_three_add(lst, s, t, s_psw);
+		three_add(lst, s, t, s_psw);
 }
 
-void	less_three_add(t_stack **lst, int s, int t, t_ps_struct *s_psw)
+void	three_add(t_stack **lst, int s, int t, t_ps_struct *s_psw)
 {
 	if ((*lst)->value > s && s < t && (*lst)->value > t)
 	{

@@ -32,7 +32,7 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 			ft_putstr_ps("pb\n", s_psw);
 		}
 	}
-	less_three(l_a, s_psw);
+	three(l_a, s_psw);
 }
 
 void	check(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
