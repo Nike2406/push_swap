@@ -62,9 +62,7 @@ int	get_next_line(int fd, char **line)
 		buf[rdd_bts] = '\0';
 		tmp_chr = ft_strchr(buf, '\n');
 		if (tmp_chr)
-		{
 			get_tmp_chr(&tmp_chr, &reminder);
-		}
 		tmp = *line;
 		*line = ft_strjoin(*line, buf);
 		free(tmp);

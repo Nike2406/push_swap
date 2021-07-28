@@ -82,6 +82,7 @@ void		ft_lstadd_back_b_ps(t_bonus **lst, t_bonus *new);
 t_bonus		*ft_lstlast_b_ps(t_bonus *lst);
 t_bonus		*ft_lstnew_b_ps(char *content);
 int			ft_lstsize_b_ps(t_bonus *lst);
+// void		fill_arr_list_b(t_ps_struct *s_psw, t_bonus **lst);
 
 void		sab(t_stack **lst);
 void		ss(t_stack **l_a, t_stack **l_b);

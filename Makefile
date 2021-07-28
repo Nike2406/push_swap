@@ -4,7 +4,7 @@ else
 	NAME = push_swap
 endif
 FLAGS		= -Wall -Wextra -Werror
-CFLAGS		= $(FLAGS) -I.
+CFLAGS		= $(FLAGS) -I. -g
 CC			= gcc
 
 ifeq ($(MAKECMDGOALS),bonus)
@@ -23,6 +23,13 @@ SRCS 		= src/push_swap.c \
 			src/compares.c \
 			src/sort.c
 SRCS_BONUS	= src/checker.c \
+			src/utils1.c \
+			src/utils2.c \
+			src/movements1.c \
+			src/movements2.c \
+			src/lst_functions.c \
+			src/compares.c \
+			src/sort.c \
 			src/utils_bonus.c \
 			get_next_line/get_next_line.c
 INCLUDE		= push_swap.h \
@@ -40,6 +47,7 @@ ${NAME}: $(OBJS) $(INCLUDE)
 	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
 
 bonus: libft $(NAME)
+#bonus: all
 
 norm:
 	norminette $(SRCS)

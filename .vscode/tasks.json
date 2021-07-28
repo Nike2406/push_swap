@@ -13,6 +13,8 @@
                 "${workspaceFolder}/libft/*.h",
                 "${workspaceFolder}/libft/*.c",
                 "${workspaceFolder}/src/*.c",
+                "${workspaceFolder}/get_next_line/*.c",
+                "${workspaceFolder}/get_next_line/*.h"
             ],
             "options": {
                 "cwd": "${fileDirname}"
