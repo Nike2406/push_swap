@@ -32,8 +32,8 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 {
 	get_length(s_psw);
 	fill_arr_list(s_psw, l_a);
-	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
-	check_repeat(s_psw);
+	if (ft_lstsize_ps((*l_a)) < 2)
+		exit(0);
 	if (ft_lstsize_ps((*l_a)) < 3)
 	{
 		if ((*l_a)->value > (*l_a)->next->value)
@@ -41,10 +41,12 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 			sab(l_a);
 			ft_putstr("sa\n");
 		}
-		return ;
+		exit(0);
 	}
+	check_sorted(*l_a);
+	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
+	check_repeat(s_psw);
 	get_index(*l_a, s_psw);
-
 	while (ft_lstsize_ps(*l_a) > 3)
 	{
 		if ((*l_a)->ind > s_psw->arr_len - 4)
@@ -59,12 +61,6 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		}
 	}
 	less_three(l_a, s_psw);
-
-
-
-	// less_five(s_psw, l_a, l_b);
-
-
 }
 
 void	ft_swap(int *a, int *b)
@@ -160,7 +156,7 @@ int	main(int argc, char **argv)
 	last_sort(&moves, &l_a, &s_psw);
 	// check(&s_psw, &l_a, &l_b);
 
-	printf("\nMove count - %d\n\n", s_psw.mv_cnt);
+	// printf("\nMove count - %d\n\n", s_psw.mv_cnt);
 
 	ft_lstclear_ps(&l_a);
 	// while (1);

@@ -33,6 +33,18 @@ void	check_isnum(char *argv)
 	}
 }
 
+void	check_sorted(t_stack *lst)
+{
+	while (lst->next)
+	{
+		if (lst->value < lst->next->value)
+			lst = lst->next;
+		else
+			return ;
+	}
+	exit(0);
+}
+
 void	check_repeat(t_ps_struct *s_psw)
 {
 	int	i;

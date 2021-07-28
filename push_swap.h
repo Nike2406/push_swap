@@ -55,6 +55,7 @@ void		last_sort(t_move *moves, t_stack **l_a, t_ps_struct *s_psw);
 void		ft_err(int	code);
 void		check_isnum(char *argv);
 void		check_repeat(t_ps_struct *s_psw);
+void		check_sorted(t_stack *lst);
 int			ft_atoi_ps(const char *str);
 int			ft_limits_ps(long long total, char const s, int sign);
 void		ft_putstr_ps(char *a, t_ps_struct *s_psw);

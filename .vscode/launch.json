@@ -10,13 +10,10 @@
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
 			"args": [
-				// "100",
-				// "542",
-				// "000",
-				// "-555"
-				"10 542 000",
-				"-12",
-				"12"
+				// "10 542 000",
+				// "-12",
+				// "12"
+				"1 2 15 13 29 "
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
