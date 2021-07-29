@@ -19,6 +19,12 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
 	check_repeat(s_psw);
 	get_index(*l_a, s_psw);
+	more_three(s_psw, l_a, l_b);
+	three(l_a);
+}
+
+void	more_three(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
+{
 	while (ft_lstsize_ps(*l_a) > 3)
 	{
 		if ((*l_a)->ind > s_psw->arr_len - 4)
@@ -32,7 +38,6 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 			ft_putstr("pb\n");
 		}
 	}
-	three(l_a);
 }
 
 int	main(int argc, char **argv)

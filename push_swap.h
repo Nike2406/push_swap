@@ -63,6 +63,7 @@ int			ft_limits_ps(long long total, char const s, int sign);
 void		get_index(t_stack *lst, t_ps_struct *s_spw);
 void		three(t_stack **l_a);
 void		three_add(t_stack **l_a, int s, int t);
+void		more_three(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b);
 
 void		ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 void		ft_lstclear_ps(t_stack **lst);
@@ -70,6 +71,8 @@ t_stack		*ft_lstlast_ps(t_stack *lst);
 t_stack		*ft_lstnew_ps(int content);
 int			ft_lstsize_ps(t_stack *lst);
 
+void		checker_moves(char *buf, t_stack **check_a, t_stack **check_b);
+void		checker_result(t_stack *check_a, t_stack *check_b);
 void		ft_lstadd_back_b_ps(t_bonus **lst, t_bonus *new);
 t_bonus		*ft_lstlast_b_ps(t_bonus *lst);
 t_bonus		*ft_lstnew_b_ps(char *content);
