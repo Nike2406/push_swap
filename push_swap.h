@@ -6,7 +6,7 @@
 /*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 12:33:17 by prochell          #+#    #+#             */
-/*   Updated: 2021/07/29 12:33:20 by prochell         ###   ########.fr       */
+/*   Updated: 2021/07/29 14:11:34 by prochell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int			ft_lstsize_ps(t_stack *lst);
 
 void		checker_moves(char *buf, t_stack **check_a, t_stack **check_b);
 void		checker_result(t_stack *check_a, t_stack *check_b);
+void		get_gnl(t_stack **check_a, t_stack **check_b);
 void		ft_lstadd_back_b_ps(t_bonus **lst, t_bonus *new);
 t_bonus		*ft_lstlast_b_ps(t_bonus *lst);
 t_bonus		*ft_lstnew_b_ps(char *content);

@@ -6,7 +6,7 @@
 /*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 12:28:26 by prochell          #+#    #+#             */
-/*   Updated: 2021/07/29 12:32:11 by prochell         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:59:56 by prochell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,39 @@ void	checker_result(t_stack *check_a, t_stack *check_b)
 	exit(1);
 }
 
-int	main(int argc, char **argv)
+void	get_gnl(t_stack **check_a, t_stack **check_b)
 {
 	char		*buf;
+
+	buf = "";
+	while (get_next_line(0, &buf) > 0)
+	{
+		checker_moves(buf, check_a, check_b);
+		free(buf);
+	}
+	free(buf);
+}
+
+int	main(int argc, char **argv)
+{
 	t_stack		*check_a;
 	t_stack		*check_b;
 	t_ps_struct	checker;
 
 	check_a = NULL;
 	check_b = NULL;
-	if (argc < 2)
-		return (0);
 	checker.arr_len = 0;
 	checker.argc = argc;
 	checker.argv = argv;
 	get_length(&checker);
 	fill_arr_list(&checker, &check_a);
+	if (!checker.arr_len && !(checker.argc > 1))
+		exit(1);
+	else if (!checker.arr_len && (checker.argc > 1))
+		ft_err(1);
 	get_sort_arr_ps(&checker, 0, checker.arr_len - 1);
 	check_repeat(&checker);
-	buf = "";
-	while (get_next_line(0, &buf) > 0)
-	{
-		checker_moves(buf, &check_a, &check_b);
-		free(buf);
-	}
-	free(buf);
+	get_gnl(&check_a, &check_b);
 	checker_result(check_a, check_b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 12:29:21 by prochell          #+#    #+#             */
-/*   Updated: 2021/07/29 12:30:42 by prochell         ###   ########.fr       */
+/*   Updated: 2021/07/29 14:11:05 by prochell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	total_optimize(int *total, t_move *moves)
 		i = moves->rb;
 	while (i)
 	{
-		total--;
+		(*total)--;
 		i--;
 	}
 	i = moves->rra;
@@ -109,7 +109,7 @@ void	total_optimize(int *total, t_move *moves)
 		i = moves->rrb;
 	while (i)
 	{
-		total--;
+		(*total)--;
 		i--;
 	}
 }

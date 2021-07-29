@@ -6,7 +6,7 @@
 /*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 12:29:26 by prochell          #+#    #+#             */
-/*   Updated: 2021/07/29 12:34:33 by prochell         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:24:44 by prochell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_isnum(char *argv)
 	{
 		if (!(argv[j] >= '0' && argv[j] <= '9'))
 		{
-			if (argv[j] == '-' && !f && !j)
+			if ((argv[j] == '-' && !f && !j) || (argv[j] == '+' && !f && !j))
 			{
 				f++;
 				if (!(argv[j + 1] >= '0' && argv[j + 1] <= '9'))

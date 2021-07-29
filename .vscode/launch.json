@@ -8,19 +8,19 @@
 			"name": "gcc - Build and debug active file",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/checker",
+			"program": "${workspaceFolder}/push_swap",
 			"args": [
 				// "10 542 000",
 				// "-12",
 				// "12"
-				"1", "29", "12"
+				"4", "4"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
-			"externalConsole": true,
+			"externalConsole": false,
 			"MIMode": "lldb",
-			// "preLaunchTask": "C/C++: gcc build active file"
+			"preLaunchTask": "C/C++: gcc build active file"
 		}
 	]
 }

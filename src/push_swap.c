@@ -6,7 +6,7 @@
 /*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 12:28:59 by prochell          #+#    #+#             */
-/*   Updated: 2021/07/29 12:29:01 by prochell         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:38:37 by prochell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 {
 	get_length(s_psw);
 	fill_arr_list(s_psw, l_a);
+	if (!s_psw->arr_len && !(s_psw->argc > 1))
+		exit(1);
+	else if (!s_psw->arr_len && (s_psw->argc > 1))
+		ft_err(1);
+	check_sorted(*l_a);
+	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
+	check_repeat(s_psw);
 	if (ft_lstsize_ps((*l_a)) < 2)
 		exit(0);
 	if (ft_lstsize_ps((*l_a)) < 3)
@@ -27,9 +34,6 @@ void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 		}
 		exit(0);
 	}
-	check_sorted(*l_a);
-	get_sort_arr_ps(s_psw, 0, s_psw->arr_len - 1);
-	check_repeat(s_psw);
 	get_index(*l_a, s_psw);
 	more_three(s_psw, l_a, l_b);
 	three(l_a);
