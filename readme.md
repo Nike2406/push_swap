@@ -13,4 +13,4 @@
 | rrr           | rra и rrb одновременно |
 
 Рандомные числа:
-	ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+	`ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l`
