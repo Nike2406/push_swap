@@ -12,5 +12,26 @@
 | rrb           | Сдвинуть вниз все элементы стека В на 1 |
 | rrr           | rra и rrb одновременно |
 
-Рандомные числа:
-	`ARG=\`ruby -e "puts (0..100).to_a.shuffle.join(' ')"\`; ./push_swap $ARG | wc -l`
+## Для компиляции основной программы:
+	make
+
+## Для компиляции чекера:
+	make bonus
+
+## Рандомные числа:
+
+```
+ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+```
+
+## Для проверки чекера достаточно вписать команду:
+
+```
+ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
+```
+
+## Для визуализации кода:
+
+```
+ python3.7 pyviz.py ruby -e "puts (-200..200).to_a.shuffle.join(' ')"
+```
