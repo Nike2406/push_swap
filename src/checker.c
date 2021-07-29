@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 12:28:26 by prochell          #+#    #+#             */
+/*   Updated: 2021/07/29 12:32:11 by prochell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	checker_moves(char *buf, t_stack **check_a, t_stack **check_b)
@@ -52,8 +64,8 @@ int	main(int argc, char **argv)
 	t_stack		*check_b;
 	t_ps_struct	checker;
 
-	check_a  = NULL;
-	check_b  = NULL;
+	check_a = NULL;
+	check_b = NULL;
 	if (argc < 2)
 		return (0);
 	checker.arr_len = 0;

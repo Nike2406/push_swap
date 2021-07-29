@@ -1,14 +1,16 @@
-#include "../push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 12:29:21 by prochell          #+#    #+#             */
+/*   Updated: 2021/07/29 12:30:42 by prochell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	init_move(t_move *moves)
-{
-	moves->l_size = 0;
-	moves->pos = 0;
-	moves->ra = 0;
-	moves->rb = 0;
-	moves->rra = 0;
-	moves->rrb = 0;
-}
+#include "../push_swap.h"
 
 int	get_pos(t_stack *lst, int index)
 {
@@ -32,7 +34,7 @@ int	get_min_ind(t_stack *lst)
 	{
 		if (ind == 0)
 			ind = lst->ind;
-		if (lst->ind < ind)
+		else if (lst->ind < ind)
 			ind = lst->ind;
 		lst = lst->next;
 	}
@@ -53,7 +55,7 @@ int	get_pos_in(int index, t_stack *lst)
 	next = tmp->ind;
 	min_index = get_min_ind(lst);
 	if (index < min_index)
-		return(get_pos(lst, min_index));
+		return (get_pos(lst, min_index));
 	while (1)
 	{
 		pos++;
@@ -86,7 +88,14 @@ int	cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index)
 	else
 		moves->rra = moves->l_size - moves->pos + 1;
 	total = moves->ra + moves->rra + moves->rb + moves->rrb;
+	total_optimize(&total, moves);
+	return (total);
+}
+
+void	total_optimize(int *total, t_move *moves)
+{
 	int	i;
+
 	i = moves->ra;
 	if (moves->ra > moves->rb)
 		i = moves->rb;
@@ -103,28 +112,4 @@ int	cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index)
 		total--;
 		i--;
 	}
-	return (total);
-}
-
-void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b)
-{
-	int	min_move;
-	int	move;
-	t_stack	*tmp;
-	t_stack	*min_elem;
-
-	min_move = -1;
-	tmp = *l_b;
-	while (tmp)
-	{
-		move = cnt_moves(moves, *l_a, *l_b, tmp->ind);
-		if (min_move == -1 || move < min_move)
-		{
-			min_move = move;
-			min_elem = tmp;
-		}
-		tmp = tmp->next;
-	}
-	min_move = cnt_moves(moves, *l_a, *l_b, min_elem->ind);
-	sort_elem(moves, l_a, l_b);
 }

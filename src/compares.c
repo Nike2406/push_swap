@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   compares.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 12:28:34 by prochell          #+#    #+#             */
+/*   Updated: 2021/07/29 12:31:46 by prochell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	three(t_stack **lst)
@@ -56,7 +68,7 @@ void	get_index(t_stack *lst, t_ps_struct *s_psw)
 			if (lst->value == s_psw->int_arr[i])
 			{
 				lst->ind = i;
-				break;
+				break ;
 			}
 			else
 				i++;
@@ -67,9 +79,9 @@ void	get_index(t_stack *lst, t_ps_struct *s_psw)
 
 void	fill_arr_list(t_ps_struct *s_psw, t_stack **lst)
 {
-	int	i;
-	int	j;
-	int	s;
+	int		i;
+	int		j;
+	int		s;
 	char	**tmp_arr;
 
 	i = 0;
@@ -91,37 +103,4 @@ void	fill_arr_list(t_ps_struct *s_psw, t_stack **lst)
 		free(tmp_arr);
 		j++;
 	}
-}
-
-void	ft_swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-void	get_sort_arr_ps(t_ps_struct *s_psw, int i, int j)
-{
-	int	mdl;
-	int	f;
-	int	l;
-
-	f = i;
-	l = j;
-	mdl = s_psw->int_arr[(f + l) / 2];
-	while (f <= l)
-	{
-		while (s_psw->int_arr[f] < mdl)
-			f++;
-		while (s_psw->int_arr[l] > mdl)
-			l--;
-		if (f <= l)
-			ft_swap(&s_psw->int_arr[f++], &s_psw->int_arr[l--]);
-	}
-	if (i < l)
-		get_sort_arr_ps(s_psw, i, l);
-	if (j > f)
-		get_sort_arr_ps(s_psw, f, j);
 }

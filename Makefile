@@ -22,7 +22,7 @@ SRCS 		= src/push_swap.c \
 			src/lst_functions.c \
 			src/compares.c \
 			src/sort.c \
-			var_checks.c
+			src/var_checks.c
 SRCS_BONUS	= src/checker.c \
 			src/utils1.c \
 			src/utils2.c \
@@ -32,7 +32,7 @@ SRCS_BONUS	= src/checker.c \
 			src/compares.c \
 			src/sort.c \
 			src/utils_bonus.c \
-			var_checks.c \
+			src/var_checks.c \
 			get_next_line/get_next_line.c
 INCLUDE		= push_swap.h \
 			get_next_line/get_next_line.h
@@ -49,7 +49,6 @@ ${NAME}: $(OBJS) $(INCLUDE)
 	$(CC) $(OBJS) $(LIBFT_A) -o $(NAME)
 
 bonus: libft $(NAME)
-#bonus: all
 
 norm:
 	norminette $(SRCS)

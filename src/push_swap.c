@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 12:28:59 by prochell          #+#    #+#             */
+/*   Updated: 2021/07/29 12:29:01 by prochell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	get_parse(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
@@ -40,12 +52,35 @@ void	more_three(t_ps_struct *s_psw, t_stack **l_a, t_stack **l_b)
 	}
 }
 
+void	lets_sort(t_move *moves, t_stack **l_a, t_stack **l_b)
+{
+	int		min_move;
+	int		move;
+	t_stack	*tmp;
+	t_stack	*min_elem;
+
+	min_move = -1;
+	tmp = *l_b;
+	while (tmp)
+	{
+		move = cnt_moves(moves, *l_a, *l_b, tmp->ind);
+		if (min_move == -1 || move < min_move)
+		{
+			min_move = move;
+			min_elem = tmp;
+		}
+		tmp = tmp->next;
+	}
+	min_move = cnt_moves(moves, *l_a, *l_b, min_elem->ind);
+	sort_elem(moves, l_a, l_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_ps_struct	s_psw;
-	t_stack *l_a;
-	t_stack *l_b;
-	t_move	moves;
+	t_stack		*l_a;
+	t_stack		*l_b;
+	t_move		moves;
 
 	l_a = NULL;
 	l_b = NULL;

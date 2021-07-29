@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: prochell <prochell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/29 12:33:17 by prochell          #+#    #+#             */
+/*   Updated: 2021/07/29 12:33:20 by prochell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -49,9 +61,9 @@ int			cnt_moves(t_move *moves, t_stack *l_a, t_stack *l_b, int index);
 int			get_pos(t_stack *lst, int index);
 int			get_pos_in(int index, t_stack *lst);
 int			get_min_ind(t_stack *lst);
+void		total_optimize(int *total, t_move *moves);
 void		sort_elem(t_move *moves, t_stack **l_a, t_stack **l_b);
 void		sort_elem_add(t_move *moves, t_stack **l_a, t_stack **l_b);
-void		push_elem(t_stack **l_a, t_stack **l_b);
 void		last_sort(t_move *moves, t_stack **l_a);
 
 void		ft_err(int	code);
